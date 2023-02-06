@@ -121,16 +121,6 @@ public class CartController {
             return "redirect:/orderlist";
         }
         }
-//    @GetMapping("/view_orderId={id}")
-//    public String viewCartOfCustomer(@PathVariable int id, Model model) {
-//        OrderEntity order = orderRepository.findById(id).get();
-//        model.addAttribute("customer", order);
-//        List<OrderDetailsEntity> orderDetails = orderDetailRepository.getOrderDetailByOrderId(id);
-//        model.addAttribute("orderDetails", orderDetails);
-//        return "page";
-//    }
-
-
 
     @GetMapping("/view_orderId={orderId}page{pageId}")
     public String userList(@PathVariable(name="orderId")  int orderId,@PathVariable(name="pageId")  int pageId,Model model) {
@@ -141,12 +131,12 @@ public class CartController {
         //Get list OrderDetail By orderId
         List<OrderDetailsEntity> listByOrderId = orderDetailRepository.getOrderDetailByOrderId(orderId);
         //Get mount of Page
-        int mountPage = listByOrderId.size();
+        int mountPage = listByOrderId.size(); // 13 book
         //Get count of Page return integer
-        int countPage = mountPage/10;
+        int countPage = mountPage/10;  // 1 trang
         //Check and set countPage
         if (mountPage % 10 != 0) {
-            countPage++;
+            countPage++; // 2 trang
         }
         model.addAttribute("countPage",countPage);
         //Set OFFSET = PageOut, begin 0
