@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -59,8 +60,10 @@ public class ProductController {
 //    }
 
     @RequestMapping(value = "/newProducts", method = POST, produces = "text/plain;charset=UTF-8")
-    public String saveProducts(ProductEntity product) {
+    public String saveProducts(ProductEntity product, RedirectAttributes redirectAttributes) {
         productRepository.save(product);
+        redirectAttributes.addFlashAttribute("message", "Add A New Product Successfully");
+
         System.out.println("Add Product Success");
         return "redirect:/";
     }

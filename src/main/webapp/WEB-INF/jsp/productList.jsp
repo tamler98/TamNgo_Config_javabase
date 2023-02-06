@@ -36,7 +36,7 @@
         <div class="footter" style="width: 100%;display: flex; justify-content: left;">
             <a class="btn btn-primary" href="#myModalAddProduct" class="trigger-btn" data-toggle="modal">Add Product</a>
         </div>
-
+        <p>${message}</p>
         <div class="modal fade" id="myModalAddProduct">
             <div class="modal-dialog">
                 <div class="modal-content">
